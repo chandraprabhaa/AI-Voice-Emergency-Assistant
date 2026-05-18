@@ -46,7 +46,16 @@ This project is part of my GenAI learning journey where I am exploring:
 AI-Voice-Emergency-Assistant/
 │
 ├── app.py
+├── output.jpg
 └── README.md
+
+---
+
+# 📸 Project Preview
+
+<p align="center">
+  <img src="output.jpg" width="800"/>
+</p>
 
 ---
 
