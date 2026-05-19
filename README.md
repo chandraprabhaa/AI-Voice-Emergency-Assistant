@@ -1,4 +1,4 @@
-🎙️ AI Voice Emergency Assistant
+### 🎙️ AI Voice Emergency Assistant
 
 <p align="center">
   <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=26&pause=1000&color=00F7FF&center=true&vCenter=true&width=900&lines=AI+Voice+Emergency+Assistant;Built+using+Groq+API+%26+Whisper+AI;Real-Time+Voice+to+Text+AI+System;Learning+GenAI+Workflows+Step+by+Step" alt="Typing SVG" />
@@ -10,7 +10,7 @@
   <img src="https://img.shields.io/badge/Learning-Voice%20AI-orange?style=for-the-badge"/>
 </p>---
 
-🚀 Overview
+### 🚀 Overview
 
 AI-powered Voice Emergency Assistant built using Groq API, Whisper AI, and Streamlit.
 
@@ -25,7 +25,7 @@ This project is part of my GenAI learning journey where I am exploring:
 
 ---
 
-✨ Current Features
+### ✨ Current Features
 
 ✅ Streamlit User Interface
 ✅ Groq API Integration
@@ -39,7 +39,7 @@ This project is part of my GenAI learning journey where I am exploring:
 
 ---
 
-🛠️ Tech Stack
+### 🛠️ Tech Stack
 
 - Python
 - Streamlit
@@ -52,7 +52,7 @@ This project is part of my GenAI learning journey where I am exploring:
 
 ---
 
-📁 Project Structure
+### 📁 Project Structure
 
 AI-Voice-Emergency-Assistant/
 │
@@ -64,13 +64,13 @@ AI-Voice-Emergency-Assistant/
 
 ---
 
-📸 Project Preview
+### 📸 Project Preview
 
 <p align="center">
   <img src="output.jpg" width="850"/>
 </p>---
 
-🔄 Upcoming Improvements
+### 🔄 Upcoming Improvements
 
 - Emergency Intent Detection
 - LangChain Integration
@@ -82,7 +82,7 @@ AI-Voice-Emergency-Assistant/
 
 ---
 
-📚 Learning Outcomes
+### 📚 Learning Outcomes
 
 ✨ Learned Streamlit-based AI app development
 ✨ Implemented speech-to-text using Whisper AI
@@ -93,7 +93,7 @@ AI-Voice-Emergency-Assistant/
 
 ---
 
-👨‍💻 Author
+### 👨‍💻 Author
 
 Chandraprabha A
 
@@ -102,7 +102,7 @@ Chandraprabha A
 
 ---
 
-⭐ Future Goal
+### ⭐ Future Goal
 
 Building intelligent AI systems that combine:
 
