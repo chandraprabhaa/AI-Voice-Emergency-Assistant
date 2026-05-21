@@ -2,11 +2,7 @@
 
 <p align="center">
   <b>Real-Time Voice + Text AI Safety Detection System</b><br>
-  ✨ Detect Danger. Respond Instantly. Save Lives with AI.
-</p>
-
-<p align="center">
-  <img src="https://media.giphy.com/media/3o7aD2saalBwwftBIY/giphy.gif" width="500"/>
+  ✨ Detect Danger. Respond Instantly. 
 </p>
 
 <p align="center">
