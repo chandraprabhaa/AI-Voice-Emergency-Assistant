@@ -10,7 +10,7 @@ load_dotenv()
 
 # Groq Client
 client = Groq(
-    api_key=os.getenv("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")
+    api_key=os.getenv("your_api_key")
 )
 
 # Streamlit UI
