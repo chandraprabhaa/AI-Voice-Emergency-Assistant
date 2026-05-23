@@ -28,7 +28,7 @@ st.title("🚨 AI Voice Emergency Assistant")
 
 st.write("Use voice or text input for emergency help")
 
-# 📍 MODULE 6: LIVE LOCATION
+# LIVE LOCATION
 
 st.subheader("📍 Live Location Sharing")
 
