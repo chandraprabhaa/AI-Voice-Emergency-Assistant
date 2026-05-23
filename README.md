@@ -1,8 +1,7 @@
-<h1 align="center">🚨 AI VOICE EMERGENCY ASSISTANT 🎙️</h1>
+<h1 align="center">🚨 AI Voice Emergency Assistant</h1>
 
 <p align="center">
-  <b>Real-Time Voice + Text AI Safety Detection System</b><br>
-  ✨ Detect Danger. Respond Instantly. 
+An intelligent real-time emergency assistance system built using <b>Streamlit</b>, <b>Groq LLM</b>, and <b>Whisper AI</b> that supports voice/text interaction, emergency detection, multilingual communication, live location sharing, and conversation memory.
 </p>
 
 <p align="center">
@@ -18,7 +17,7 @@
 <h2>⚡ About the Project</h2>
 
 <p>
-AI Voice Emergency Assistant is a real-time AI system that detects emergency situations using <b>voice and text input</b> and provides instant safety guidance using <b>Groq LLM + Whisper AI</b>.
+AI Voice Emergency Assistant is a smart AI-powered safety assistant that helps users during emergency situations using voice and text communication. The system detects unsafe conditions, provides emergency guidance, supports multiple languages, and retrieves live user location in real time.
 </p>
 
 ---
@@ -26,56 +25,128 @@ AI Voice Emergency Assistant is a real-time AI system that detects emergency sit
 <h2>🧠 Core Features</h2>
 
 <ul>
-  <li>🎤 Voice Input (Whisper Speech-to-Text)</li>
-  <li>⌨️ Text Input System</li>
-  <li>🚨 AI Emergency Detection (SAFE / DANGER)</li>
-  <li>🤖 Smart AI Safety Responses</li>
-  <li>💬 Conversation Memory</li>
-  <li>⚡ Fast Groq LLM Processing</li>
+
+<li>
+<b>🟦 Text Input System</b><br>
+Users can type emergency-related messages directly into the application.
+</li>
+
+<br>
+
+<li>
+<b>🟩 Voice Input + Whisper AI</b><br>
+Supports voice recording and converts speech into text using OpenAI Whisper.
+</li>
+
+<br>
+
+<li>
+<b>🟥 Emergency Detection Engine</b><br>
+Uses Groq LLM to analyze whether the situation indicates:
+<ul>
+<li>Danger</li>
+<li>Threat</li>
+<li>Medical Emergency</li>
+<li>Unsafe Conditions</li>
+</ul>
+</li>
+
+<br>
+
+<li>
+<b>🟨 Conversation Memory</b><br>
+Maintains previous user and AI messages using Streamlit session state.
+</li>
+
+<br>
+
+<li>
+<b>🌍 Multi-language Support</b><br>
+Automatically detects the user's spoken language and responds in the same language.
+</li>
+
+<br>
+
+<li>
+<b>📍 Live Location Sharing</b><br>
+Retrieves the user's real-time GPS location using browser geolocation services.
+</li>
+
 </ul>
 
 ---
 
-<h2>🏗️ System Architecture (4 Modules)</h2>
+<h2>🏗️ System Architecture</h2>
 
-<h3>🟦 Module 1: Text Input System</h3>
-<p>User types message → Streamlit input → AI processing</p>
-
-<h3>🟩 Module 2: Voice Input System</h3>
-<p>Voice → Audio Recorder → Whisper AI → Text Conversion</p>
-
-<h3>🟥 Module 3: Emergency Detection Engine</h3>
-<p>Input → Groq LLM → YES / NO Classification</p>
-
-<h3>🟨 Module 4: Conversation Memory</h3>
-<p>User + AI messages → Session Storage → Chat History</p>
+<pre>
+Voice/Text Input
+        ↓
+Whisper Speech-to-Text
+        ↓
+Language Detection
+        ↓
+Groq Emergency Detection
+        ↓
+AI Emergency Response
+        ↓
+Conversation Memory
+        ↓
+Live Location Sharing
+</pre>
 
 ---
 
-<h2>🔄 Workflow</h2>
+<h2>⚙️ Modules Overview</h2>
 
-<p align="center">
-Voice/Text → Whisper → Groq AI → Emergency Detection → AI Response → Memory → UI
-</p>
+| Module | Status | Description |
+|---|---|---|
+| 🟦 Text Input System | ✅ Working | User types emergency messages |
+| 🟩 Voice Input + Whisper | ✅ Working | Converts speech into text |
+| 🟥 Emergency Detection Engine | ✅ Working | Detects emergency situations |
+| 🟨 Conversation Memory | ✅ Working | Stores conversation history |
+| 🌍 Multi-language Support | ✅ Working | Detects and responds in user language |
+| 📍 Live Location Sharing | ✅ Working | Retrieves browser GPS location |
 
 ---
 
 <h2>📸 Output Screenshots</h2>
 
 <p align="center">
-  <img src="ai voice output.png" width="500"><br>
-  <b>AI Voice Output</b>
+  <img src="ai voice output1.png" width="700"><br><br>
+  <img src="ai voice output2.png" width="700"><br><br>
+  <b>AI Voice Emergency Assistant Output</b>
 </p>
 
 ---
 
-<h2>💡 Sample Output</h2>
+<h2>💡 Sample Inputs</h2>
+
+<h4>⌨️ Text Input</h4>
 
 <pre>
-User: I am feeling chest pain and cannot breathe
+There is a fire in my house
+</pre>
 
-AI: 🚨 EMERGENCY DETECTED
-Please seek immediate medical help immediately.
+<h4>🎤 Voice Input</h4>
+
+<pre>
+I cannot breathe properly
+</pre>
+
+---
+
+<h2>🌍 Multi-language Example</h2>
+
+<h4>User Voice (Tamil)</h4>
+
+<pre>
+எனக்கு மூச்சு விட முடியவில்லை
+</pre>
+
+<h4>AI Response (Tamil)</h4>
+
+<pre>
+உடனே மருத்துவ உதவி பெறுங்கள்.
 </pre>
 
 ---
@@ -83,11 +154,27 @@ Please seek immediate medical help immediately.
 <h2>📈 Future Improvements</h2>
 
 <ul>
-  <li>📱 Mobile App Version</li>
-  <li>🌍 Multi-language Support</li>
-  <li>📍 Location-based Alerts</li>
-  <li>📞 Emergency Calling System</li>
-  <li>🛰️ SMS Alert System</li>
+<li>🚑 Nearby Hospital Finder</li>
+<li>📞 Emergency Contact Alert System</li>
+<li>📲 SMS Alert Integration</li>
+<li>🗺️ Real-Time Map Tracking</li>
+<li>🔊 AI Voice Response</li>
+<li>☁️ Cloud Database Storage</li>
+<li>📱 Mobile App Version</li>
+</ul>
+
+---
+
+<h2>🛠️ Technologies Used</h2>
+
+<ul>
+<li>Python</li>
+<li>Streamlit</li>
+<li>Groq API</li>
+<li>OpenAI Whisper</li>
+<li>Streamlit JS Eval</li>
+<li>Audio Recorder Streamlit</li>
+<li>Python Dotenv</li>
 </ul>
 
 ---
@@ -101,3 +188,8 @@ Please seek immediate medical help immediately.
 
 ---
 
+<h2>⭐ Support</h2>
+
+<p>
+If you like this project, give it a ⭐ on GitHub.
+</p>
