@@ -14,7 +14,7 @@ load_dotenv()
 # GROQ CLIENT
 
 client = Groq(
-    api_key=os.getenv("")
+    api_key=os.getenv("your_groq_api_key_here")
 )
 
 # STREAMLIT PAGE SETTINGS
