@@ -1,0 +1,29 @@
+- streamlit
+- groq
+- python-dotenv
+- audio-recorder-streamlit
+- streamlit-js-eval
+- openai-whisper
+- torch
+- ffmpeg-python
+
+## ✅ Project Structure
+
+AI-Voice-Emergency-Assistant/
+│
+├── app.py
+├── requirements.txt
+├── .env
+├── audio.wav
+├── screenshots/
+│   ├── output1.png
+│   ├── output2.png
+│   └── output3.png
+│
+└── README.md
+
+## ✅ .env File
+
+Create .env
+
+GROQ_API_KEY=your_groq_api_key_here
