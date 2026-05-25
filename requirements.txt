@@ -11,7 +11,7 @@
 
 AI-Voice-Emergency-Assistant/
 │
-├── app.py
+├── app_voice.py
 ├── requirements.txt
 ├── .env
 ├── audio.wav
