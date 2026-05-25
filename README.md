@@ -101,9 +101,9 @@ Live Location + Emergency Alert
 ## 📸 Output Screenshots
 
 <p align="center">
-  <img src="screenshots/ai voice output1.png" width="800"><br><br>
-  <img src="screenshots/ai voice output2.png" width="800"><br><br>
-  <img src="screenshots/ai voice output3.png" width="800">
+  <img src="ai voice output1.png" width="800"><br><br>
+  <img src="ai voice output2.png" width="800"><br><br>
+  <img src="ai voice output3.png" width="800">
 </p>
 
 ---
