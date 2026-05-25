@@ -1,7 +1,7 @@
 <h1 align="center">🚨 AI Voice Emergency Assistant</h1>
 
 <p align="center">
-An AI-powered emergency support system built using <b>Streamlit</b>, <b>Groq LLM</b>, and <b>Whisper AI</b> that supports voice/text interaction, emergency detection, live location sharing, emergency contact alerts, and multilingual communication.
+An AI-powered emergency support system built using Streamlit, Groq LLM, and Whisper AI that supports voice/text interaction, emergency detection, emergency classification, live location sharing, WhatsApp emergency alerts, emergency contact calling, multilingual communication, and conversation memory.
 </p>
 
 <p align="center">
@@ -16,7 +16,7 @@ An AI-powered emergency support system built using <b>Streamlit</b>, <b>Groq LLM
 
 ## ⚡ About the Project
 
-AI Voice Emergency Assistant is a smart AI-powered safety assistant that helps users during emergency situations using voice and text communication. The system detects unsafe conditions, classifies emergency types, provides emergency guidance, supports multiple languages, and retrieves live user location in real time.
+AI Voice Emergency Assistant is a smart AI-powered safety assistant designed to help users during emergency situations using voice and text communication. The system can detect unsafe conditions, classify emergency types, provide emergency guidance, retrieve live user location, and instantly send emergency alerts through WhatsApp and phone call support. It also supports multilingual communication and maintains conversation memory for better contextual assistance.
 
 ---
 
