@@ -14,6 +14,20 @@ An AI-powered emergency support system built using Streamlit, Groq LLM, and Whis
 
 ---
 
+## 🛠️ Technologies Used
+
+- Python
+- Streamlit
+- Groq API
+- OpenAI Whisper
+- Torch
+- FFmpeg Python
+- Streamlit JS Eval
+- Audio Recorder Streamlit
+- Python Dotenv
+
+---
+
 ## 🧠 Core Features
 
 ### 🟦 Text Input System
@@ -54,13 +68,11 @@ Allows users to:
 - Find nearby ambulance services
 
 ### 🧠 Conversation Memory
-Maintains previous user and AI conversations using Streamlit session state.
-
+    Maintains previous user and AI conversations using Streamlit session state and allows users to download emergency chat history for future reference.
 ---
 
 ## 🏗️ System Architecture
 
-```text
 Voice/Text Input
         ↓
 Whisper Speech-to-Text
@@ -75,8 +87,14 @@ AI Emergency Response
         ↓
 Conversation Memory
         ↓
-Live Location + Emergency Alert
-```
+Download Chat History
+        ↓
+Live Location Retrieval
+        ↓
+Nearby Emergency Services
+(Hospital / Police / Ambulance)
+        ↓
+WhatsApp Emergency Alert
 
 ---
 
@@ -85,7 +103,8 @@ Live Location + Emergency Alert
 <p align="center">
   <img src="ai voice output1.png" width="800"><br><br>
   <img src="ai voice output2.png" width="800"><br><br>
-  <img src="ai voice output3.png" width="800">
+  <img src="ai voice output3.png" width="800><br><br>
+  <img src="ai voice output4.png" width="800>
 </p>
 
 ---
@@ -114,18 +133,6 @@ I cannot breathe properly
 - 🚨 Real-Time SOS Auto Trigger
 - 🛰️ Live Emergency Tracking Dashboard
 - 🤖 AI-Based Emergency Severity Score
-
----
-
-## 🛠️ Technologies Used
-
-- Python
-- Streamlit
-- Groq API
-- OpenAI Whisper
-- Streamlit JS Eval
-- Audio Recorder Streamlit
-- Python Dotenv
 
 ---
 
