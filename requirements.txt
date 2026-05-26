@@ -1,3 +1,5 @@
+## ✅ Requirements
+
 - streamlit
 - groq
 - python-dotenv
@@ -6,6 +8,25 @@
 - openai-whisper
 - torch
 - ffmpeg-python
+
+---
+
+## ✅ Features
+
+- 🎤 Voice-Based Emergency Detection
+- ⌨️ Text Emergency Support
+- 🧠 AI Emergency Classification
+- 📍 Live Location Sharing
+- 💬 WhatsApp Emergency Alert
+- 📞 One-Click Emergency Calling
+- 🏥 Nearby Hospital Suggestions
+- 🚓 Nearby Police Station Suggestions
+- 🚑 Nearby Ambulance Service Suggestions
+- 🌍 Multi-Language Voice Support
+- 🧠 Conversation Memory
+- 📄 Download Emergency Chat History
+
+---
 
 ## ✅ Project Structure
 
@@ -22,8 +43,10 @@ AI-Voice-Emergency-Assistant/
 │
 └── README.md
 
+---
+
 ## ✅ .env File
 
-Create .env
+Create a .env file
 
 GROQ_API_KEY=your_groq_api_key_here
