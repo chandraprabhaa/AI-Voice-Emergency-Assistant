@@ -1,7 +1,7 @@
 <h1 align="center">🚨 AI Voice Emergency Assistant</h1>
 
-<p align="center">
-An AI-powered emergency support system built using Streamlit, Groq LLM, and Whisper AI that supports voice/text interaction, emergency detection, emergency classification, live location sharing, WhatsApp emergency alerts, emergency contact calling, multilingual communication, and conversation memory.
+<p align="center"> ⚡ About the Project
+An AI-powered emergency support system built using Streamlit, Groq LLM, and Whisper AI that supports voice/text interaction, emergency detection, emergency classification, live location sharing, nearby hospital/police/ambulance suggestions, WhatsApp emergency alerts, emergency contact calling, multilingual communication, and conversation memory.
 </p>
 
 <p align="center">
@@ -11,12 +11,6 @@ An AI-powered emergency support system built using Streamlit, Groq LLM, and Whis
   <img src="https://img.shields.io/badge/Whisper-Speech%20to%20Text-green.svg">
   <img src="https://img.shields.io/badge/Status-Active-success.svg">
 </p>
-
----
-
-## ⚡ About the Project
-
-AI Voice Emergency Assistant is a smart AI-powered safety assistant designed to help users during emergency situations using voice and text communication. The system can detect unsafe conditions, classify emergency types, provide emergency guidance, retrieve live user location, and instantly send emergency alerts through WhatsApp and phone call support. It also supports multilingual communication and maintains conversation memory for better contextual assistance.
 
 ---
 
@@ -50,11 +44,14 @@ Automatically detects the user's spoken language and responds in the same langua
 ### 📍 Live Location Sharing
 Retrieves the user's real-time GPS location using browser geolocation services.
 
-### 🆘 Emergency Contact Alert
+### 🆘 Emergency Contact & Emergency Services
 Allows users to:
 - Call emergency contacts
 - Send WhatsApp emergency alerts
 - Share live location instantly
+- Find nearby hospitals
+- Find nearby police stations
+- Find nearby ambulance services
 
 ### 🧠 Conversation Memory
 Maintains previous user and AI conversations using Streamlit session state.
@@ -80,21 +77,6 @@ Conversation Memory
         ↓
 Live Location + Emergency Alert
 ```
-
----
-
-## ⚙️ Modules Overview
-
-| Module | Status | Description |
-|---|---|---|
-| 🟦 Text Input System | ✅ Working | User types emergency messages |
-| 🟩 Voice Input + Whisper | ✅ Working | Converts speech into text |
-| 🟥 Emergency Detection Engine | ✅ Working | Detects emergency situations |
-| 🟨 Emergency Classification | ✅ Working | Identifies emergency type |
-| 🌍 Multi-language Support | ✅ Working | Detects and responds in user language |
-| 📍 Live Location Sharing | ✅ Working | Retrieves browser GPS location |
-| 🆘 Emergency Contact Alert | ✅ Working | WhatsApp & Call support |
-| 🧠 Conversation Memory | ✅ Working | Stores conversation history |
 
 ---
 
@@ -125,12 +107,13 @@ I cannot breathe properly
 
 ## 📈 Future Improvements
 
-- 🚑 Nearby Hospital Finder
-- 🚓 Nearby Police Station Finder
 - 📲 SMS Alert Integration
 - 🔊 AI Voice Response
 - ☁️ Cloud Database Storage
 - 📱 Mobile App Version
+- 🚨 Real-Time SOS Auto Trigger
+- 🛰️ Live Emergency Tracking Dashboard
+- 🤖 AI-Based Emergency Severity Score
 
 ---
 
