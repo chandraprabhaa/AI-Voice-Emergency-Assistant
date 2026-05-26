@@ -5,6 +5,7 @@ from audio_recorder_streamlit import audio_recorder
 from streamlit_js_eval import get_geolocation
 import whisper
 import urllib.parse
+import webbrowser
 import os
 
 # LOAD ENV VARIABLES
@@ -14,10 +15,10 @@ load_dotenv()
 # GROQ CLIENT
 
 client = Groq(
-    api_key=os.getenv("your_groq_api_key_here")
+    api_key=os.getenv("GROQ_API_KEY")
 )
 
-# STREAMLIT PAGE SETTINGS
+# PAGE CONFIG
 
 st.set_page_config(
     page_title="AI Voice Emergency Assistant",
@@ -59,24 +60,52 @@ else:
 
     st.warning("⚠️ Please allow location access")
 
+# 🏥 NEARBY EMERGENCY SERVICES
+
+st.subheader("🏥 Nearby Emergency Services")
+
+if latitude and longitude:
+
+    hospital_url = (
+        f"https://www.google.com/maps/search/hospitals+near+me/@{latitude},{longitude},15z"
+    )
+
+    police_url = (
+        f"https://www.google.com/maps/search/police+station+near+me/@{latitude},{longitude},15z"
+    )
+
+    ambulance_url = (
+        f"https://www.google.com/maps/search/ambulance+near+me/@{latitude},{longitude},15z"
+    )
+
+    st.markdown(f"[🏥 Find Nearby Hospitals]({hospital_url})")
+
+    st.markdown(f"[🚓 Find Nearby Police Stations]({police_url})")
+
+    st.markdown(f"[🚑 Find Nearby Ambulance Services]({ambulance_url})")
+
+else:
+
+    st.warning("⚠️ Location required for nearby emergency services")
+
 # 🆘 EMERGENCY CONTACT MODULE
 
 st.subheader("🆘 Emergency Contact")
 
 emergency_number = st.text_input(
     "Enter Emergency Contact Number",
-    placeholder="ex 9734534244"
+    placeholder="9876543210"
 )
 
 if emergency_number:
 
-    # Call Link
+    # CALL LINK
 
     call_link = f"tel:{emergency_number}"
 
     st.markdown(f"[📞 Call Emergency Contact]({call_link})")
 
-    # WhatsApp Emergency Alert
+    # WHATSAPP ALERT
 
     whatsapp_message = f"""
 🚨 EMERGENCY ALERT!
@@ -87,11 +116,7 @@ My Live Location:
 {maps_url}
 """
 
-    # Encode Message Properly
-
     encoded_message = urllib.parse.quote(whatsapp_message)
-
-    # WhatsApp Link
 
     whatsapp_link = (
         f"https://wa.me/91{emergency_number}?text={encoded_message}"
@@ -99,18 +124,17 @@ My Live Location:
 
     st.markdown(f"[💬 Send WhatsApp Alert]({whatsapp_link})")
 
-# CONVERSATION MEMORY
+# SESSION MEMORY
 
 if "messages" not in st.session_state:
 
     st.session_state.messages = []
 
-# FUNCTION:
-# EMERGENCY DETECTION
+# 🚨 EMERGENCY DETECTION FUNCTION
 
 def detect_emergency(user_text):
 
-    detection = client.chat.completions.create(
+    response = client.chat.completions.create(
 
         model="llama-3.3-70b-versatile",
 
@@ -119,17 +143,15 @@ def detect_emergency(user_text):
             {
                 "role": "system",
                 "content": """
-                You are an emergency detection AI.
-
-                Analyze whether the user's message indicates:
+                Detect whether the user's message indicates:
                 - danger
-                - fear
-                - unsafe situation
                 - emergency
+                - unsafe situation
                 - medical issue
                 - threat
+                - fear
 
-                Reply ONLY with:
+                Reply ONLY:
                 YES
                 or
                 NO
@@ -143,14 +165,13 @@ def detect_emergency(user_text):
         ]
     )
 
-    return detection.choices[0].message.content.strip()
+    return response.choices[0].message.content.strip()
 
-# FUNCTION:
-# EMERGENCY CLASSIFICATION
+# 🚨 EMERGENCY CLASSIFICATION FUNCTION
 
 def classify_emergency(user_text):
 
-    result = client.chat.completions.create(
+    response = client.chat.completions.create(
 
         model="llama-3.3-70b-versatile",
 
@@ -168,7 +189,7 @@ def classify_emergency(user_text):
                 - Natural Disaster
                 - General Unsafe Situation
 
-                Reply ONLY with category name.
+                Reply ONLY category name.
                 """
             },
 
@@ -179,10 +200,9 @@ def classify_emergency(user_text):
         ]
     )
 
-    return result.choices[0].message.content.strip()
+    return response.choices[0].message.content.strip()
 
-# FUNCTION:
-# AI RESPONSE
+# 🤖 AI RESPONSE FUNCTION
 
 def get_ai_response():
 
@@ -201,8 +221,8 @@ def get_ai_response():
 
                 Give:
                 - short responses
-                - safety advice
-                - emergency guidance
+                - safety guidance
+                - emergency instructions
 
                 Reply in the SAME language as the user.
                 """
@@ -225,7 +245,7 @@ if st.button("Send Text"):
 
         st.write("🧑 You said:", text_input)
 
-        # Store User Message
+        # STORE USER MESSAGE
 
         st.session_state.messages.append(
             {
@@ -234,15 +254,15 @@ if st.button("Send Text"):
             }
         )
 
-        # Emergency Detection
+        # DETECT EMERGENCY
 
-        detection_result = detect_emergency(text_input)
+        detection = detect_emergency(text_input)
 
-        if "YES" in detection_result:
+        if detection == "YES":
 
             st.error("🚨 Emergency Situation Detected!")
 
-            # Emergency Classification
+            # CLASSIFY EMERGENCY
 
             emergency_type = classify_emergency(text_input)
 
@@ -252,14 +272,14 @@ if st.button("Send Text"):
 
             st.success("✅ No Emergency Detected")
 
-        # AI Response
+        # AI RESPONSE
 
         ai_reply = get_ai_response()
 
         st.write("🤖 AI Response:")
         st.write(ai_reply)
 
-        # Store AI Reply
+        # STORE AI RESPONSE
 
         st.session_state.messages.append(
             {
@@ -280,16 +300,17 @@ if audio_bytes:
 
     st.success("✅ Voice Recorded Successfully")
 
-    # Save Audio
+    # SAVE AUDIO
 
     with open("audio.wav", "wb") as f:
+
         f.write(audio_bytes)
 
-    # Load Whisper Model
+    # LOAD WHISPER MODEL
 
     model = whisper.load_model("small")
 
-    # Speech To Text
+    # SPEECH TO TEXT
 
     result = model.transcribe(
         "audio.wav",
@@ -304,7 +325,7 @@ if audio_bytes:
 
     st.write("🗣️ You said:", user_input)
 
-    # Store User Message
+    # STORE USER MESSAGE
 
     st.session_state.messages.append(
         {
@@ -313,15 +334,15 @@ if audio_bytes:
         }
     )
 
-    # Emergency Detection
+    # DETECT EMERGENCY
 
-    detection_result = detect_emergency(user_input)
+    detection = detect_emergency(user_input)
 
-    if "YES" in detection_result:
+    if detection == "YES":
 
         st.error("🚨 Emergency Situation Detected!")
 
-        # Emergency Classification
+        # CLASSIFY EMERGENCY
 
         emergency_type = classify_emergency(user_input)
 
@@ -331,14 +352,14 @@ if audio_bytes:
 
         st.success("✅ No Emergency Detected")
 
-    # AI Response
+    # AI RESPONSE
 
     ai_reply = get_ai_response()
 
     st.write("🤖 AI Response:")
     st.write(ai_reply)
 
-    # Store AI Reply
+    # STORE AI RESPONSE
 
     st.session_state.messages.append(
         {
@@ -360,3 +381,22 @@ for msg in st.session_state.messages:
     else:
 
         st.write(f"🤖 AI: {msg['content']}")
+
+# 📄 DOWNLOAD CHAT HISTORY
+
+st.subheader("📄 Download Emergency Chat")
+
+chat_history = ""
+
+for msg in st.session_state.messages:
+
+    role = "User" if msg["role"] == "user" else "AI"
+
+    chat_history += f"{role}: {msg['content']}\n\n"
+
+st.download_button(
+    label="⬇️ Download Chat History",
+    data=chat_history,
+    file_name="emergency_chat.txt",
+    mime="text/plain"
+)
