@@ -1,8 +1,6 @@
 <h1 align="center">🚨 AI Voice Emergency Assistant</h1>
 
-<h3 align="center">⚡ About the Project
-  
-<p align="center"> 
+<p align="center">
 An AI-powered emergency support system built using Streamlit, Groq LLM, and Whisper AI that supports voice/text interaction, emergency detection, emergency classification, live location sharing, nearby hospital/police/ambulance suggestions, WhatsApp emergency alerts, emergency contact calling, multilingual communication, and conversation memory.
 </p>
 
@@ -16,7 +14,13 @@ An AI-powered emergency support system built using Streamlit, Groq LLM, and Whis
 
 ---
 
-## 🛠️ Technologies Used
+# ⚡ About the Project
+
+AI Voice Emergency Assistant is a smart AI-powered safety assistant designed to help users during emergency situations using voice and text communication. The system can detect unsafe conditions, classify emergency types, provide emergency guidance, retrieve live user location, and instantly send emergency alerts through WhatsApp and emergency calling support. It also helps users locate nearby hospitals, police stations, and ambulance services while supporting multilingual communication and conversation memory.
+
+---
+
+# 🛠️ Technologies Used
 
 - Python
 - Streamlit
@@ -30,22 +34,22 @@ An AI-powered emergency support system built using Streamlit, Groq LLM, and Whis
 
 ---
 
-## 🧠 Core Features
+# 🧠 Core Features
 
-### 🟦 Text Input System
+## 🟦 Text Input System
 Users can type emergency-related messages directly into the application.
 
-### 🟩 Voice Input + Whisper AI
+## 🟩 Voice Input + Whisper AI
 Supports voice recording and converts speech into text using OpenAI Whisper.
 
-### 🟥 Emergency Detection Engine
+## 🟥 Emergency Detection Engine
 Uses Groq LLM to detect:
 - Danger
 - Threat
 - Medical Emergency
 - Unsafe Situations
 
-### 🟨 Emergency Type Classification
+## 🟨 Emergency Type Classification
 Automatically classifies emergencies into:
 - Medical Emergency
 - Fire Emergency
@@ -54,13 +58,13 @@ Automatically classifies emergencies into:
 - Natural Disaster
 - General Unsafe Situation
 
-### 🌍 Multi-language Support
+## 🌍 Multi-language Support
 Automatically detects the user's spoken language and responds in the same language.
 
-### 📍 Live Location Sharing
+## 📍 Live Location Sharing
 Retrieves the user's real-time GPS location using browser geolocation services.
 
-### 🆘 Emergency Contact & Emergency Services
+## 🆘 Emergency Contact & Emergency Services
 Allows users to:
 - Call emergency contacts
 - Send WhatsApp emergency alerts
@@ -69,12 +73,14 @@ Allows users to:
 - Find nearby police stations
 - Find nearby ambulance services
 
-### 🧠 Conversation Memory
-    Maintains previous user and AI conversations using Streamlit session state and allows users to download emergency chat history for future reference.
+## 🧠 Conversation Memory & Chat Download
+Maintains previous user and AI conversations using Streamlit session state and allows users to download emergency chat history for future reference.
+
 ---
 
-## 🏗️ System Architecture
+# 🏗️ System Architecture
 
+```text
 Voice/Text Input
         ↓
 Whisper Speech-to-Text
@@ -97,29 +103,30 @@ Nearby Emergency Services
 (Hospital / Police / Ambulance)
         ↓
 WhatsApp Emergency Alert
+```
 
 ---
 
-## 📸 Output Screenshots
+# 📸 Output Screenshots
 
 <p align="center">
   <img src="ai voice output1.png" width="800"><br><br>
   <img src="ai voice output2.png" width="800"><br><br>
-  <img src="ai voice output3.png" width="800><br><br>
-  <img src="ai voice output4.png" width="800>
+  <img src="ai voice output3.png" width="800"><br><br>
+  <img src="ai voice output4.png" width="800">
 </p>
 
 ---
 
-## 💡 Sample Inputs
+# 💡 Sample Inputs
 
-### ⌨️ Text Input
+## ⌨️ Text Input
 
 ```text
 There is a fire in my house
 ```
 
-### 🎤 Voice Input
+## 🎤 Voice Input
 
 ```text
 I cannot breathe properly
@@ -127,7 +134,7 @@ I cannot breathe properly
 
 ---
 
-## 📈 Future Improvements
+# 📈 Future Improvements
 
 - 📲 SMS Alert Integration
 - 🔊 AI Voice Response
@@ -139,7 +146,7 @@ I cannot breathe properly
 
 ---
 
-## 👨‍💻 Author
+# 👨‍💻 Author
 
 **Chandraprabha A**  
 🚀 GenAI Developer
