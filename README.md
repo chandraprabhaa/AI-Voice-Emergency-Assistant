@@ -1,6 +1,7 @@
 <h1 align="center">🚨 AI Voice Emergency Assistant</h1>
 
 <h3 align="center">⚡ About the Project
+  
 <p align="center"> 
 An AI-powered emergency support system built using Streamlit, Groq LLM, and Whisper AI that supports voice/text interaction, emergency detection, emergency classification, live location sharing, nearby hospital/police/ambulance suggestions, WhatsApp emergency alerts, emergency contact calling, multilingual communication, and conversation memory.
 </p>
@@ -109,6 +110,7 @@ WhatsApp Emergency Alert
 </p>
 
 ---
+
 ## 💡 Sample Inputs
 
 ### ⌨️ Text Input
