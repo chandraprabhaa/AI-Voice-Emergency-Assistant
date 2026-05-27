@@ -139,8 +139,7 @@ WhatsApp Emergency Alert
   <img src="ai voice output1.png" width="800"><br><br>
   <img src="ai voice output2.png" width="800"><br><br>
   <img src="ai voice output3.png" width="800"><br><br>
-  <img src="ai voice output4.png" width="800"><br><br>
-  <img src="ai voice output5.png" width="800">
+  <img src="ai voice output4.png" width="800">
 </p>
 
 ---
