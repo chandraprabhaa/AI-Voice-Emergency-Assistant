@@ -1,7 +1,6 @@
 <h1 align="center">🚨 AI Voice Emergency Assistant</h1>
 
 <h2 align="center"> ⚡ About the Project
-
   
 <p align="center">
 An AI-powered emergency safety assistant built using Streamlit, LangChain, Groq LLM, Whisper AI, and gTTS that supports multilingual voice/text interaction, emergency detection, AI voice responses, live location sharing, nearby emergency services, and WhatsApp emergency alerts.
