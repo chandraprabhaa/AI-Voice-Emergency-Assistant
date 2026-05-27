@@ -69,8 +69,7 @@ Create a `.env` file in the root directory:
 GROQ_API_KEY=your_groq_api_key_here
 ```
 
-👉 Replace `your_groq_api_key_here` with your actual API key from:
-:contentReference[oaicite:0]{index=0}
+👉 Replace `your_groq_api_key_here` with your actual API key 
 
 ---
 
