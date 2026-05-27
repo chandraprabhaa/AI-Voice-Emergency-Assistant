@@ -1,55 +1,64 @@
 <h1 align="center">🚨 AI Voice Emergency Assistant</h1>
 
+<h2 align="center"> ⚡ About the Project
+  
 <p align="center">
-An AI-powered emergency support system built using Streamlit, Groq LLM, and Whisper AI that supports voice/text interaction, emergency detection, emergency classification, live location sharing, nearby hospital/police/ambulance suggestions, WhatsApp emergency alerts, emergency contact calling, multilingual communication, and conversation memory.
+An AI-powered emergency safety assistant built using Streamlit, LangChain, Groq LLM, Whisper AI, and gTTS that supports multilingual voice/text interaction, emergency detection, AI voice responses, live location sharing, nearby emergency services, and WhatsApp emergency alerts.
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Python-3.10-blue.svg">
   <img src="https://img.shields.io/badge/Streamlit-App-red.svg">
-  <img src="https://img.shields.io/badge/AI-Groq%20LLM-orange.svg">
-  <img src="https://img.shields.io/badge/Whisper-Speech%20to%20Text-green.svg">
+  <img src="https://img.shields.io/badge/LangChain-AI%20Framework-green.svg">
+  <img src="https://img.shields.io/badge/Groq-LLM-orange.svg">
+  <img src="https://img.shields.io/badge/Whisper-Speech--AI-blue.svg">
+  <img src="https://img.shields.io/badge/gTTS-Voice%20AI-yellow.svg">
   <img src="https://img.shields.io/badge/Status-Active-success.svg">
 </p>
 
 ---
 
-# ⚡ About the Project
-
-AI Voice Emergency Assistant is a smart AI-powered safety assistant designed to help users during emergency situations using voice and text communication. The system can detect unsafe conditions, classify emergency types, provide emergency guidance, retrieve live user location, and instantly send emergency alerts through WhatsApp and emergency calling support. It also helps users locate nearby hospitals, police stations, and ambulance services while supporting multilingual communication and conversation memory.
-
----
-
 # 🛠️ Technologies Used
 
-- Python
 - Streamlit
+- LangChain
 - Groq API
 - OpenAI Whisper
+- Google Text-to-Speech (gTTS)
 - Torch
-- FFmpeg Python
+- FFmpeg
 - Streamlit JS Eval
 - Audio Recorder Streamlit
 - Python Dotenv
 
 ---
 
-# 🧠 Core Features
+# 🧠 Features
 
-## 🟦 Text Input System
-Users can type emergency-related messages directly into the application.
+## 🎤 Voice Input with Whisper AI
+Records user voice and converts speech into text using Whisper AI.
 
-## 🟩 Voice Input + Whisper AI
-Supports voice recording and converts speech into text using OpenAI Whisper.
+---
 
-## 🟥 Emergency Detection Engine
-Uses Groq LLM to detect:
-- Danger
-- Threat
-- Medical Emergency
-- Unsafe Situations
+## ⌨️ Text-based Emergency Chat
+Users can directly type emergency-related messages.
 
-## 🟨 Emergency Type Classification
+---
+
+## 🌍 Multilingual Communication
+Automatically detects user language and responds in the same language.
+
+---
+
+## 🚨 Emergency Detection System
+Uses Groq LLM with LangChain to detect:
+- danger
+- threats
+- medical emergencies
+- unsafe situations
+
+---
+
+## 🟨 Emergency Classification
 Automatically classifies emergencies into:
 - Medical Emergency
 - Fire Emergency
@@ -58,27 +67,47 @@ Automatically classifies emergencies into:
 - Natural Disaster
 - General Unsafe Situation
 
-## 🌍 Multi-language Support
-Automatically detects the user's spoken language and responds in the same language.
+---
 
-## 📍 Live Location Sharing
-Retrieves the user's real-time GPS location using browser geolocation services.
-
-## 🆘 Emergency Contact & Emergency Services
-Allows users to:
-- Call emergency contacts
-- Send WhatsApp emergency alerts
-- Share live location instantly
-- Find nearby hospitals
-- Find nearby police stations
-- Find nearby ambulance services
-
-## 🧠 Conversation Memory & Chat Download
-Maintains previous user and AI conversations using Streamlit session state and allows users to download emergency chat history for future reference.
+## 🔊 AI Voice Response
+Converts AI responses into voice using Google Text-to-Speech for speech-to-speech emergency interaction.
 
 ---
 
-# 🏗️ System Architecture
+## 📍 Live Location Sharing
+Retrieves live GPS location using browser geolocation.
+
+---
+
+## 🏥 Nearby Emergency Services
+Provides quick access to:
+- nearby hospitals
+- nearby police stations
+- nearby ambulance services
+
+through Google Maps integration.
+
+---
+
+## 🆘 Emergency Alerts & Calling
+Allows users to:
+- call emergency contacts,
+- send WhatsApp emergency alerts,
+- and share live location instantly.
+
+---
+
+## 🧠 Conversation Memory
+Stores previous conversations during the session for better interaction continuity.
+
+---
+
+## 📄 Download Chat History
+Users can download complete emergency conversations as a text file.
+
+---
+
+# 🏗️ System Workflow
 
 ```text
 Voice/Text Input
@@ -87,20 +116,17 @@ Whisper Speech-to-Text
         ↓
 Language Detection
         ↓
-Groq Emergency Detection
+Emergency Detection
         ↓
 Emergency Classification
         ↓
 AI Emergency Response
         ↓
-Conversation Memory
+AI Voice Playback
         ↓
-Download Chat History
-        ↓
-Live Location Retrieval
+Live Location Sharing
         ↓
 Nearby Emergency Services
-(Hospital / Police / Ambulance)
         ↓
 WhatsApp Emergency Alert
 ```
@@ -113,7 +139,8 @@ WhatsApp Emergency Alert
   <img src="ai voice output1.png" width="800"><br><br>
   <img src="ai voice output2.png" width="800"><br><br>
   <img src="ai voice output3.png" width="800"><br><br>
-  <img src="ai voice output4.png" width="800">
+  <img src="ai voice output4.png" width="800"><br><br>
+  <img src="ai voice output5.png" width="800">
 </p>
 
 ---
@@ -134,19 +161,19 @@ I cannot breathe properly
 
 ---
 
-# 📈 Future Improvements
+# 🚀 Future Improvements
 
 - 📲 SMS Alert Integration
-- 🔊 AI Voice Response
 - ☁️ Cloud Database Storage
 - 📱 Mobile App Version
-- 🚨 Real-Time SOS Auto Trigger
+- 🤖 AI Severity Score
+- 📡 Offline Emergency Mode
+- 🎥 Emergency Camera Capture
 - 🛰️ Live Emergency Tracking Dashboard
-- 🤖 AI-Based Emergency Severity Score
 
 ---
 
 # 👨‍💻 Author
 
-**Chandraprabha A**  
+## Chandraprabha A
 🚀 GenAI Developer
