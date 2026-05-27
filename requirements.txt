@@ -1,41 +1,55 @@
 ## ✅ Requirements
 
+Install dependencies using:
+
+```bash
+pip install -r requirements.txt
+```
+
+### Libraries Used
+
 - streamlit
+- langchain
 - groq
 - python-dotenv
 - audio-recorder-streamlit
 - streamlit-js-eval
 - openai-whisper
 - torch
+- gtts
 - ffmpeg-python
 
 ---
 
-## ✅ Features
+## 🚀 Features
 
-- 🎤 Voice-Based Emergency Detection
+- 🎤 Voice-Based Emergency Detection (Whisper AI)
 - ⌨️ Text Emergency Support
-- 🧠 AI Emergency Classification
+- 🧠 AI Emergency Detection & Classification (LangChain + Groq)
+- 🔊 AI Voice Response (Text-to-Speech)
+- 🌍 Multi-Language Support (Auto Detect + Response)
 - 📍 Live Location Sharing
-- 💬 WhatsApp Emergency Alert
-- 📞 One-Click Emergency Calling
 - 🏥 Nearby Hospital Suggestions
 - 🚓 Nearby Police Station Suggestions
-- 🚑 Nearby Ambulance Service Suggestions
-- 🌍 Multi-Language Voice Support
-- 🧠 Conversation Memory
+- 🚑 Nearby Ambulance Suggestions
+- 💬 WhatsApp Emergency Alert System
+- 📞 One-Click Emergency Calling
+- 🧠 Conversation Memory (Session Based)
 - 📄 Download Emergency Chat History
 
 ---
 
-## ✅ Project Structure
+## 📁 Project Structure
 
+```text
 AI-Voice-Emergency-Assistant/
 │
 ├── app_voice.py
 ├── requirements.txt
 ├── .env
 ├── audio.wav
+├── voice.mp3
+│
 ├── screenshots/
 │   ├── output1.png
 │   ├── output2.png
@@ -43,11 +57,25 @@ AI-Voice-Emergency-Assistant/
 │   └── output4.png
 │
 └── README.md
+```
 
 ---
 
-## ✅ .env File
+## 🔐 .env File Setup
 
-Create a .env file
+Create a `.env` file in the root directory:
 
+```env
 GROQ_API_KEY=your_groq_api_key_here
+```
+
+👉 Replace `your_groq_api_key_here` with your actual API key from:
+:contentReference[oaicite:0]{index=0}
+
+---
+
+## ⚡ How to Run Project
+
+```bash
+streamlit run app_voice.py
+```
