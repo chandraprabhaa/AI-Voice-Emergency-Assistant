@@ -23,19 +23,17 @@ pip install -r requirements.txt
 
 ## 🚀 Features
 
-- 🎤 Voice-Based Emergency Detection (Whisper AI)
-- ⌨️ Text Emergency Support
-- 🧠 AI Emergency Detection & Classification (LangChain + Groq)
-- 🔊 AI Voice Response (Text-to-Speech)
-- 🌍 Multi-Language Support (Auto Detect + Response)
+- 🎤 Voice + Text Emergency Detection (Whisper AI)
+- 🧠 AI Emergency Detection & Classification (Groq + LangChain)
+- 🔥 Emergency Severity Score (1–10 Risk Analysis)
+- 🔊 AI Voice Response (TTS)
+- 🌍 Multilingual Support (Auto Detect)
 - 📍 Live Location Sharing
-- 🏥 Nearby Hospital Suggestions
-- 🚓 Nearby Police Station Suggestions
-- 🚑 Nearby Ambulance Suggestions
-- 💬 WhatsApp Emergency Alert System
-- 📞 One-Click Emergency Calling
-- 🧠 Conversation Memory (Session Based)
-- 📄 Download Emergency Chat History
+- 🏥 Nearby Hospitals / Police / Ambulance
+- 💬 WhatsApp Emergency Alert
+- 📞 Emergency Contact Call Link
+- 🧠 Session Memory Chat
+- 📄 Download Chat History
 
 ---
 
