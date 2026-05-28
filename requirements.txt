@@ -39,7 +39,6 @@ pip install -r requirements.txt
 
 ## 📁 Project Structure
 
-```text
 AI-Voice-Emergency-Assistant/
 │
 ├── app_voice.py
@@ -55,7 +54,6 @@ AI-Voice-Emergency-Assistant/
 │   └── output4.png
 │
 └── README.md
-```
 
 ---
 
