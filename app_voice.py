@@ -6,7 +6,6 @@ import urllib.parse
 import tempfile
 
 from gtts import gTTS
-
 from audio_recorder_streamlit import audio_recorder
 from streamlit_js_eval import get_geolocation
 
@@ -19,7 +18,7 @@ from langchain.prompts import PromptTemplate
 
 load_dotenv()
 
-# PAGE CONFIG
+# PAGE
 
 st.set_page_config(
     page_title="AI Voice Emergency Assistant",
@@ -28,16 +27,11 @@ st.set_page_config(
 )
 
 st.title("🚨 AI Voice Emergency Assistant")
+st.write("AI-powered emergency support using LangChain + Groq")
 
-st.write(
-    "AI-powered emergency support using LangChain + Groq"
-)
-
-# LOAD WHISPER MODEL
+# LOAD MODELS
 
 model = whisper.load_model("small")
-
-# LANGCHAIN LLM
 
 llm = ChatGroq(
     groq_api_key=os.getenv("your_groq_api_key_here"),
@@ -50,26 +44,20 @@ memory = ConversationBufferMemory(
     return_messages=True
 )
 
-# CONVERSATION CHAIN
-
 conversation = ConversationChain(
     llm=llm,
     memory=memory,
     verbose=False
 )
 
-# EMERGENCY DETECTION CHAIN
+# PROMPTS
 
 detect_prompt = PromptTemplate(
     input_variables=["text"],
     template="""
-    Detect whether the user's message indicates:
-    - danger
-    - emergency
-    - unsafe situation
-    - medical issue
-    - threat
-    - fear
+    Detect if this message contains:
+    danger, emergency, fear, threat,
+    medical issue, unsafe situation.
 
     Reply ONLY:
     YES
@@ -81,24 +69,16 @@ detect_prompt = PromptTemplate(
     """
 )
 
-detect_chain = LLMChain(
-    llm=llm,
-    prompt=detect_prompt
-)
-
-# EMERGENCY CLASSIFICATION
-
 classify_prompt = PromptTemplate(
     input_variables=["text"],
     template="""
-    Classify the emergency into ONE category only:
+    Classify into ONE category:
 
     - Medical Emergency
     - Fire Emergency
     - Crime or Threat
     - Road Accident
     - Natural Disaster
- #   - General Unsafe Situation
 
     Reply ONLY category name.
 
@@ -107,12 +87,38 @@ classify_prompt = PromptTemplate(
     """
 )
 
+severity_prompt = PromptTemplate(
+    input_variables=["text"],
+    template="""
+    Give emergency severity score
+    from 1 to 10.
+
+    1 = low risk
+    10 = critical life danger
+
+    Reply ONLY number.
+
+    Message:
+    {text}
+    """
+)
+
+detect_chain = LLMChain(
+    llm=llm,
+    prompt=detect_prompt
+)
+
 classify_chain = LLMChain(
     llm=llm,
     prompt=classify_prompt
 )
 
-# LANGUAGE MAP
+severity_chain = LLMChain(
+    llm=llm,
+    prompt=severity_prompt
+)
+
+# LANGUAGE
 
 language_map = {
     "en": "en",
@@ -125,133 +131,89 @@ language_map = {
 
 # FUNCTIONS
 
-def detect_emergency(user_text):
+def detect_emergency(text):
 
-    result = detect_chain.run(
-        text=user_text
-    )
+    result = detect_chain.run(text=text)
 
     return result.strip()
 
-def classify_emergency(user_text):
+def classify_emergency(text):
 
-    result = classify_chain.run(
-        text=user_text
-    )
+    result = classify_chain.run(text=text)
 
     return result.strip()
 
-def get_ai_response(user_text):
+def emergency_score(text):
 
-    response = conversation.predict(
+    result = severity_chain.run(text=text)
+
+    return result.strip()
+
+def ai_response(text):
+
+    reply = conversation.predict(
         input=f"""
         You are an AI Emergency Assistant.
 
-        Help users calmly during unsafe situations.
+        Help calmly during emergencies.
 
-        Provide:
-        - calm guidance
-        - emergency steps
+        Give:
+        - quick guidance
+        - safety steps
         - reassurance
-        - quick actionable advice
+        - emergency advice
 
-        Keep responses short and clear.
+        Keep response short.
 
-        If situation is critical:
-        - advise contacting emergency services
-        - prioritize safety
-        - avoid panic
+        Reply in same language.
 
-        Reply ONLY in the SAME language as the user.
-
-        User Message:
-        {user_text}
+        User:
+        {text}
         """
     )
 
-    return response
+    return reply
 
-# TEXT TO SPEECH
-
-def speak_text(text, lang_code):
+def speak(text, lang="en"):
 
     try:
 
         tts = gTTS(
             text=text,
-            lang=lang_code
+            lang=lang
         )
 
-        temp_audio = tempfile.NamedTemporaryFile(
+        temp = tempfile.NamedTemporaryFile(
             delete=False,
             suffix=".mp3"
         )
 
-        tts.save(temp_audio.name)
+        tts.save(temp.name)
 
-        with open(
-            temp_audio.name,
+        audio_file = open(
+            temp.name,
             "rb"
-        ) as audio_file:
-
-            audio_bytes = audio_file.read()
+        )
 
         st.audio(
-            audio_bytes,
+            audio_file.read(),
             format="audio/mp3"
         )
 
     except Exception as e:
 
-        st.error(
-            f"TTS Error: {e}"
-        )
+        st.error(f"TTS Error: {e}")
 
-# EMERGENCY ALERT AUDIO
+def emergency_alert():
 
-def play_emergency_alert():
+    speak(
+        "Emergency detected. Please stay calm.",
+        "en"
+    )
 
-    try:
+# LOCATION
 
-        alert_text = """
-        Emergency detected.
-        Please stay calm.
-        Help is being contacted.
-        """
-
-        tts = gTTS(
-            text=alert_text,
-            lang="en"
-        )
-
-        temp_audio = tempfile.NamedTemporaryFile(
-            delete=False,
-            suffix=".mp3"
-        )
-
-        tts.save(temp_audio.name)
-
-        with open(
-            temp_audio.name,
-            "rb"
-        ) as audio_file:
-
-            audio_bytes = audio_file.read()
-
-        st.audio(
-            audio_bytes,
-            format="audio/mp3"
-        )
-
-    except Exception as e:
-
-        st.error(
-            f"Emergency Audio Error: {e}"
-        )
-
-# LOCATION MODULE
-
-st.subheader("📍 Live Location Sharing")
+st.subheader("📍 Live Location")
 
 location = get_geolocation()
 
@@ -264,109 +226,161 @@ if location:
     latitude = location["coords"]["latitude"]
     longitude = location["coords"]["longitude"]
 
-    st.success("✅ Location Retrieved")
-
-    st.write("Latitude:", latitude)
-    st.write("Longitude:", longitude)
-
     maps_url = (
         f"https://www.google.com/maps?q="
         f"{latitude},{longitude}"
     )
 
+    st.success("✅ Location Retrieved")
+
+    st.write("Latitude:", latitude)
+    st.write("Longitude:", longitude)
+
     st.markdown(
-        f"[🗺️ Open Google Maps]({maps_url})"
+        f"[🗺️ Open Maps]({maps_url})"
     )
 
 else:
 
-    st.warning(
-        "⚠️ Please allow location access"
-    )
+    st.warning("⚠️ Allow location access")
 
-# NEARBY SERVICES
+# EMERGENCY SERVICES
 
 st.subheader("🏥 Nearby Emergency Services")
 
 if latitude and longitude:
 
-    hospital_url = (
-        f"https://www.google.com/maps/search/"
-        f"hospitals+near+me/@"
-        f"{latitude},{longitude},15z"
-    )
+    services = {
+        "🏥 Hospitals":
+        f"https://www.google.com/maps/search/hospitals+near+me/@{latitude},{longitude},15z",
 
-    police_url = (
-        f"https://www.google.com/maps/search/"
-        f"police+station+near+me/@"
-        f"{latitude},{longitude},15z"
-    )
+        "🚓 Police":
+        f"https://www.google.com/maps/search/police+station+near+me/@{latitude},{longitude},15z",
 
-    ambulance_url = (
-        f"https://www.google.com/maps/search/"
-        f"ambulance+near+me/@"
-        f"{latitude},{longitude},15z"
-    )
+        "🚑 Ambulance":
+        f"https://www.google.com/maps/search/ambulance+near+me/@{latitude},{longitude},15z"
+    }
 
-    st.markdown(
-        f"[🏥 Nearby Hospitals]({hospital_url})"
-    )
+    for name, link in services.items():
 
-    st.markdown(
-        f"[🚓 Nearby Police Stations]({police_url})"
-    )
+        st.markdown(f"[{name}]({link})")
 
-    st.markdown(
-        f"[🚑 Nearby Ambulance]({ambulance_url})"
-    )
-
-# EMERGENCY CONTACT
+# CONTACT
 
 st.subheader("🆘 Emergency Contact")
 
-emergency_number = st.text_input(
-    "Enter Emergency Contact Number",
+phone = st.text_input(
+    "Enter Contact Number",
     placeholder="9876543210"
 )
 
-if emergency_number:
-
-    call_link = f"tel:{emergency_number}"
+if phone:
 
     st.markdown(
-        f"[📞 Call Emergency Contact]"
-        f"({call_link})"
+        f"[📞 Call Contact](tel:{phone})"
     )
 
-    whatsapp_message = f"""
-🚨 EMERGENCY ALERT!
+    whatsapp_text = f"""
+🚨 EMERGENCY ALERT
 
 I may need help.
 
-My Live Location:
+My Location:
 {maps_url}
 """
 
-    encoded_message = urllib.parse.quote(
-        whatsapp_message
+    encoded = urllib.parse.quote(
+        whatsapp_text
     )
 
     whatsapp_link = (
-        f"https://wa.me/91"
-        f"{emergency_number}"
-        f"?text={encoded_message}"
+        f"https://wa.me/91{phone}?text={encoded}"
     )
 
     st.markdown(
-        f"[💬 Send WhatsApp Alert]"
-        f"({whatsapp_link})"
+        f"[💬 Send WhatsApp Alert]({whatsapp_link})"
     )
 
-# SESSION MEMORY
+# CHAT MEMORY
 
 if "messages" not in st.session_state:
 
     st.session_state.messages = []
+
+# MAIN FUNCTION
+
+def process_message(user_text, lang="en"):
+
+    st.write("🧑 User:", user_text)
+
+    st.session_state.messages.append({
+        "role": "user",
+        "content": user_text
+    })
+
+    detection = detect_emergency(user_text)
+
+    if detection == "YES":
+
+        st.error("🚨 Emergency Detected")
+
+        emergency_alert()
+
+        emergency_type = classify_emergency(
+            user_text
+        )
+
+        severity = emergency_score(
+            user_text
+        )
+
+        st.warning(
+            f"⚠️ Type: {emergency_type}"
+        )
+
+        st.error(
+            f"🔥 Emergency Severity Score: {severity}/10"
+        )
+
+        # severity progress bar
+
+        score = int(severity)
+
+        st.progress(score / 10)
+
+        if score >= 8:
+
+            st.error(
+                "🚑 Critical Situation"
+            )
+
+        elif score >= 5:
+
+            st.warning(
+                "⚠️ Moderate Emergency"
+            )
+
+        else:
+
+            st.info(
+                "✅ Low Risk Situation"
+            )
+
+    else:
+
+        st.success("✅ No Emergency Detected")
+
+    reply = ai_response(user_text)
+
+    st.write("🤖 AI Response:")
+    st.write(reply)
+
+    speak(reply, lang)
+
+    st.session_state.messages.append({
+        "role": "assistant",
+        "content": reply
+    })
 
 # TEXT INPUT
 
@@ -380,72 +394,7 @@ if st.button("Send Text"):
 
     if text_input:
 
-        st.write(
-            "🧑 User:",
-            text_input
-        )
-
-        st.session_state.messages.append(
-            {
-                "role": "user",
-                "content": text_input
-            }
-        )
-
-        # DETECT EMERGENCY
-
-        detection = detect_emergency(
-            text_input
-        )
-
-        if detection == "YES":
-
-            st.error(
-                "🚨 Emergency Situation Detected!"
-            )
-
-            play_emergency_alert()
-
-            emergency_type = (
-                classify_emergency(
-                    text_input
-                )
-            )
-
-            st.warning(
-                f"⚠️ Emergency Type: "
-                f"{emergency_type}"
-            )
-
-        else:
-
-            st.success(
-                "✅ No Emergency Detected"
-            )
-
-        # AI RESPONSE
-
-        ai_reply = get_ai_response(
-            text_input
-        )
-
-        st.write("🤖 AI Response:")
-
-        st.write(ai_reply)
-
-        # AI VOICE
-
-        speak_text(
-            ai_reply,
-            "en"
-        )
-
-        st.session_state.messages.append(
-            {
-                "role": "assistant",
-                "content": ai_reply
-            }
-        )
+        process_message(text_input)
 
 # VOICE INPUT
 
@@ -460,14 +409,7 @@ if audio_bytes:
         format="audio/wav"
     )
 
-    st.success(
-        "✅ Voice Recorded"
-    )
-
-    with open(
-        "audio.wav",
-        "wb"
-    ) as f:
+    with open("audio.wav", "wb") as f:
 
         f.write(audio_bytes)
 
@@ -476,90 +418,30 @@ if audio_bytes:
         fp16=False
     )
 
-    user_input = result["text"]
+    user_text = result["text"]
 
-    detected_language = (
-        result["language"]
-    )
+    detected_language = result["language"]
 
     st.info(
-        f"🌍 Detected Language: "
-        f"{detected_language}"
+        f"🌍 Language: {detected_language}"
     )
 
     st.write(
         "🗣️ You said:",
-        user_input
+        user_text
     )
-
-    st.session_state.messages.append(
-        {
-            "role": "user",
-            "content": user_input
-        }
-    )
-
-    # DETECT EMERGENCY
-
-    detection = detect_emergency(
-        user_input
-    )
-
-    if detection == "YES":
-
-        st.error(
-            "🚨 Emergency Situation Detected!"
-        )
-
-        play_emergency_alert()
-
-        emergency_type = (
-            classify_emergency(
-                user_input
-            )
-        )
-
-        st.warning(
-            f"⚠️ Emergency Type: "
-            f"{emergency_type}"
-        )
-
-    else:
-
-        st.success(
-            "✅ No Emergency Detected"
-        )
-
-    # AI RESPONSE
-
-    ai_reply = get_ai_response(
-        user_input
-    )
-
-    st.write("🤖 AI Response:")
-
-    st.write(ai_reply)
-
-    # MULTILINGUAL AI VOICE
 
     lang_code = language_map.get(
         detected_language,
         "en"
     )
 
-    speak_text(
-        ai_reply,
+    process_message(
+        user_text,
         lang_code
     )
 
-    st.session_state.messages.append(
-        {
-            "role": "assistant",
-            "content": ai_reply
-        }
-    )
-
-# CHAT MEMORY
+# MEMORY DISPLAY
 
 st.subheader("🧠 Conversation Memory")
 
@@ -568,20 +450,18 @@ for msg in st.session_state.messages:
     if msg["role"] == "user":
 
         st.write(
-            f"🧑 User: "
-            f"{msg['content']}"
+            f"🧑 User: {msg['content']}"
         )
 
     else:
 
         st.write(
-            f"🤖 AI: "
-            f"{msg['content']}"
+            f"🤖 AI: {msg['content']}"
         )
 
 # DOWNLOAD CHAT
 
-st.subheader("📄 Download Chat History")
+st.subheader("📄 Download Chat")
 
 chat_history = ""
 
@@ -594,8 +474,7 @@ for msg in st.session_state.messages:
     )
 
     chat_history += (
-        f"{role}: "
-        f"{msg['content']}\n\n"
+        f"{role}: {msg['content']}\n\n"
     )
 
 st.download_button(
