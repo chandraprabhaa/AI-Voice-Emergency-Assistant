@@ -1,4 +1,3 @@
-````md
 <h1 align="center">🚨 AI Voice Emergency Assistant</h1>
 
 <h2 align="center">⚡ About the Project</h2>
