@@ -1,9 +1,11 @@
+````md
 <h1 align="center">🚨 AI Voice Emergency Assistant</h1>
 
-<h2 align="center"> ⚡ About the Project
-  
+<h2 align="center">⚡ About the Project</h2>
+
 <p align="center">
-An AI-powered emergency safety assistant built using Streamlit, LangChain, Groq LLM, Whisper AI, and gTTS that supports multilingual voice/text interaction, emergency detection, AI voice responses, live location sharing, nearby emergency services, and WhatsApp emergency alerts.
+An AI-powered emergency safety assistant built using Streamlit, LangChain, Groq LLM, Whisper AI, and gTTS.  
+The system supports multilingual voice and text interaction, emergency detection, severity analysis, AI voice responses, live location sharing, nearby emergency services, and instant WhatsApp emergency alerts.
 </p>
 
 <p align="center">
@@ -32,78 +34,19 @@ An AI-powered emergency safety assistant built using Streamlit, LangChain, Groq 
 
 ---
 
-# 🧠 Features
+# 🧠 Core Features
 
-## 🎤 Voice Input with Whisper AI
-Records user voice and converts speech into text using Whisper AI.
-
----
-
-## ⌨️ Text-based Emergency Chat
-Users can directly type emergency-related messages.
-
----
-
-## 🌍 Multilingual Communication
-Automatically detects user language and responds in the same language.
-
----
-
-## 🚨 Emergency Detection System
-Uses Groq LLM with LangChain to detect:
-- danger
-- threats
-- medical emergencies
-- unsafe situations
-
----
-
-## 🟨 Emergency Classification
-Automatically classifies emergencies into:
-- Medical Emergency
-- Fire Emergency
-- Crime or Threat
-- Road Accident
-- Natural Disaster
-- General Unsafe Situation
-
----
-
-## 🔊 AI Voice Response
-Converts AI responses into voice using Google Text-to-Speech for speech-to-speech emergency interaction.
-
----
-
-## 📍 Live Location Sharing
-Retrieves live GPS location using browser geolocation.
-
----
-
-## 🏥 Nearby Emergency Services
-Provides quick access to:
-- nearby hospitals
-- nearby police stations
-- nearby ambulance services
-
-through Google Maps integration.
-
----
-
-## 🆘 Emergency Alerts & Calling
-Allows users to:
-- call emergency contacts,
-- send WhatsApp emergency alerts,
-- and share live location instantly.
-
----
-
-## 🧠 Conversation Memory
-Stores previous conversations during the session for better interaction continuity.
-
----
-
-## 📄 Download Chat History
-Users can download complete emergency conversations as a text file.
+- 🎤 Voice & Text Emergency Interaction
+- 🌍 Multilingual AI Communication
+- 🚨 Emergency Detection using Groq LLM
+- 🟨 Emergency Classification System
+- 🔥 Emergency Severity Score Analysis
+- 🔊 AI Voice Response System
+- 📍 Live GPS Location Sharing
+- 🏥 Nearby Emergency Services Access
+- 🆘 WhatsApp Emergency Alerts & Calling
+- 🧠 Conversation Memory
+- 📄 Download Chat History
 
 ---
 
@@ -120,6 +63,8 @@ Emergency Detection
         ↓
 Emergency Classification
         ↓
+Severity Score Analysis
+        ↓
 AI Emergency Response
         ↓
 AI Voice Playback
@@ -129,7 +74,7 @@ Live Location Sharing
 Nearby Emergency Services
         ↓
 WhatsApp Emergency Alert
-```
+````
 
 ---
 
@@ -162,17 +107,17 @@ I cannot breathe properly
 
 # 🚀 Future Improvements
 
-- 📲 SMS Alert Integration
-- ☁️ Cloud Database Storage
-- 📱 Mobile App Version
-- 🤖 AI Severity Score
-- 📡 Offline Emergency Mode
-- 🎥 Emergency Camera Capture
-- 🛰️ Live Emergency Tracking Dashboard
+* 📲 SMS Alert Integration
+* ☁️ Cloud Database Storage
+* 📱 Mobile App Version
+* 📡 Offline Emergency Mode
+* 🎥 Emergency Camera Capture
+* 🛰️ Live Emergency Tracking Dashboard
 
 ---
 
 # 👨‍💻 Author
 
 ## Chandraprabha A
+
 🚀 GenAI Developer
